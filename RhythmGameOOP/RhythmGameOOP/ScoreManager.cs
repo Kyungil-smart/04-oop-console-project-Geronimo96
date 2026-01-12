@@ -2,32 +2,48 @@
 
 namespace RhythmGameOOP
 {
+    // [점수 관리 클래스] 점수, 콤보, 랭크 계산을 담당합니다.
     public class ScoreManager
     {
-        // 외부에서 읽을 수는 있지만(get), 수정은 이 클래스 내부에서만(private set) 가능
+        // 외부에서 읽기만 가능(get), 수정 불가(private set)
         public int Score { get; private set; }
-        public int Combo { get; private set; }
-        public string LastJudge { get; private set; } = "READY"; // 판정 문구 (Perfect/Good/Miss)
+        public int MaxCombo { get; private set; } // 최대 콤보 기록용
+        public int CurrentCombo { get; private set; }
+        public string LastJudge { get; private set; } = "READY";
 
-        // 점수 추가 메서드
+        // 점수 추가
         public void AddScore(int amount, string judgeText)
         {
             Score += amount;
-            Combo++;
+            CurrentCombo++;
             LastJudge = judgeText;
+
+            // 최대 콤보 갱신 (현재 콤보가 기록보다 높으면 갱신)
+            if (CurrentCombo > MaxCombo)
+            {
+                MaxCombo = CurrentCombo;
+            }
         }
 
         // 콤보 초기화 (틀렸을 때)
         public void ResetCombo()
         {
-            // 콤보가 이어지고 있었는데 틀린 경우에만 감점
-            if (Combo > 0)
+            if (CurrentCombo > 0)
             {
                 LastJudge = "MISS";
-                // 점수가 음수가 되지 않도록 0과 비교 (Math.Max)
                 Score = Math.Max(0, Score - 10);
             }
-            Combo = 0; // 콤보는 무조건 0으로
+            CurrentCombo = 0;
+        }
+
+        // [신규 기능] 점수에 따른 랭크 계산 (S, A, B, C, F)
+        public string GetRank()
+        {
+            if (Score >= 5000) return "S"; // 기준 점수는 원하는 대로 수정하세요
+            if (Score >= 3000) return "A";
+            if (Score >= 1500) return "B";
+            if (Score >= 500) return "C";
+            return "F";
         }
     }
 }

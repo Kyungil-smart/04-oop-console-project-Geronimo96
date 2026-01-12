@@ -45,11 +45,11 @@ namespace RhythmGameOOP
         {
             // 1. 점수와 콤보 갱신
             Console.SetCursorPosition(8, ScoreRow);
-            Console.Write(scoreMgr.Score.ToString("D5")); // D5: 00100 형식
+            Console.Write(scoreMgr.Score.ToString("D5"));
 
             Console.SetCursorPosition(25, ScoreRow);
             // PadRight: 숫자가 줄어들 때 잔상이 남지 않게 뒤에 공백 추가
-            Console.Write(scoreMgr.Combo.ToString().PadRight(4));
+            Console.Write(scoreMgr.CurrentCombo.ToString().PadRight(4));
 
             Console.SetCursorPosition(8, JudgeRow);
             Console.Write(scoreMgr.LastJudge.PadRight(10));

@@ -49,19 +49,6 @@ namespace RhythmGameOOP
                     case ConsoleKey.DownArrow: // 아래로 이동
                         if (selectedIndex < songs.Count) selectedIndex++;
                         break;
-
-                    // 볼륨 조절 키 (+ 키)
-                    case ConsoleKey.OemPlus:
-                    case ConsoleKey.Add:
-                        GlobalSettings.Volume = Math.Min(100, GlobalSettings.Volume + 5);
-                        break;
-
-                    // 볼륨 조절 키 (- 키)
-                    case ConsoleKey.OemMinus:
-                    case ConsoleKey.Subtract:
-                        GlobalSettings.Volume = Math.Max(0, GlobalSettings.Volume - 5);
-                        break;
-
                     case ConsoleKey.Enter: // 선택 완료
                         // 맨 마지막 '게임 종료'를 골랐다면 null 반환
                         if (selectedIndex == songs.Count) return null;
@@ -79,12 +66,10 @@ namespace RhythmGameOOP
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("\n\n");
             Console.WriteLine("     ==========================================");
-            Console.WriteLine("          R  H  Y  T  H  M    C  O  N  S  O  L  E ");
+            Console.WriteLine("      R  H  Y  T  H  M    C  O  N  S  O  L  E ");
             Console.WriteLine("     ==========================================");
+            Console.Write("\n\n\n");
             Console.ResetColor();
-
-            // 현재 볼륨 표시
-            Console.WriteLine("\n             [ 볼륨 : " + GlobalSettings.Volume.ToString().PadLeft(3) + "% ]  ( +/- 키로 조절 )\n");
 
             // 곡 목록 출력
             for (int i = 0; i < songs.Count + 1; i++) // +1은 종료 버튼 때문
