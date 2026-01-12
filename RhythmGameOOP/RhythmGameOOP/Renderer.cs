@@ -19,15 +19,15 @@ namespace RhythmGameOOP
             Console.CursorVisible = false;
             try
             {
-                // 1. 창 크기를 먼저 조절하고
+                // 1. 창 크기 설정 (70칸)
                 Console.SetWindowSize(70, 32);
             }
             catch { }
 
-            // 2. [중요] 0.1초 정도 기다렸다가 (윈도우가 창 크기를 바꿀 시간 주기)
+            // 2. 윈도우가 적용할 시간 주기
             System.Threading.Thread.Sleep(100);
 
-            // 3. 화면을 깨끗하게 지웁니다! (이게 없어서 글자가 겹친 것)
+            // 3. 화면 싹 지우기
             Console.Clear();
         }
 
