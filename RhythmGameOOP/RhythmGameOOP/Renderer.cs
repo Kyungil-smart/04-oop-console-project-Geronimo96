@@ -38,6 +38,10 @@ namespace RhythmGameOOP
             Console.WriteLine("========================================");
             Console.WriteLine("    |   D   |   F   |   J   |   K   |");
             Console.WriteLine("========================================");
+
+            // [★추가] 하트 UI 설명 텍스트
+            Console.SetCursorPosition(45, 3);
+            Console.Write("[ LIFE ]");
         }
 
         // [최적화 2] 매 프레임 변하는 숫자와 노트만 커서를 옮겨 덮어쓴다.
@@ -84,6 +88,19 @@ namespace RhythmGameOOP
                 Console.SetCursorPosition(4, TrackStartRow + y);
                 Console.Write(trackBuffer.ToString());
             }
+        }
+        // [★추가] 하트 그리는 함수
+        private void DrawHearts(int life)
+        {
+            Console.SetCursorPosition(45, 5); // 오른쪽 위치 잡기
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            for (int i = 0; i < 10; i++) // 최대 10개
+            {
+                if (i < life) Console.Write("♥ "); // 남은 목숨
+                else Console.Write("  ");       // 깎인 목숨은 빈칸
+            }
+            Console.ResetColor();
         }
     }
 }

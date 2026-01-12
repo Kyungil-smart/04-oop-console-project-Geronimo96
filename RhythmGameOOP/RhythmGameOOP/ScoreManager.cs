@@ -11,6 +11,12 @@ namespace RhythmGameOOP
         public int CurrentCombo { get; private set; }
         public string LastJudge { get; private set; } = "READY";
 
+        // [★추가] 목숨 (기본 10개)
+        public int Life { get; private set; } = 10;
+
+        // [★추가] 게임 오버 상태 확인
+        public bool IsDead => Life <= 0;
+
         // 점수 추가
         public void AddScore(int amount, string judgeText)
         {
@@ -28,10 +34,21 @@ namespace RhythmGameOOP
         // 콤보 초기화 (틀렸을 때)
         public void ResetCombo()
         {
+            if (Life > 0)
+            {
+                Life--;
+            }
+
+            //콤보 초기화 로직
             if (CurrentCombo > 0)
             {
                 LastJudge = "MISS";
                 Score = Math.Max(0, Score - 10);
+            }
+            else
+            {
+                LastJudge = "MISS"; // 콤보가 없어도 미스 뜨게 처리 
+
             }
             CurrentCombo = 0;
         }
