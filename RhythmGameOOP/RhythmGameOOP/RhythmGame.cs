@@ -29,6 +29,9 @@ namespace RhythmGameOOP
         {
             renderer.Init();
 
+            // [추가 1] 배경(트랙, 점수판 등)을 먼저 그려야 합니다.
+            renderer.DrawStaticUI();
+
             // 파일 존재 여부 확인
             if (!System.IO.File.Exists(GlobalSettings.MusicPath))
             {
@@ -45,6 +48,9 @@ namespace RhythmGameOOP
                 songDuration = audio.GetDuration() + 2.0;
             }
             catch { }
+
+            // [추가 2] ★★★ 가장 중요! 시간을 흐르게 해야 합니다. ★★★
+            stopwatch.Start();
 
             Thread gameThread = new Thread(GameLoop);
             gameThread.Start();
