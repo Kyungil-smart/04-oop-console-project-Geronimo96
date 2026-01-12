@@ -16,8 +16,19 @@ namespace RhythmGameOOP
 
         public void Init()
         {
-            Console.CursorVisible = false; // 커서 깜빡임 끄기
-            try { Console.SetWindowSize(60, 32); } catch { } // 창 크기 조절
+            Console.CursorVisible = false;
+            try
+            {
+                // 1. 창 크기를 먼저 조절하고
+                Console.SetWindowSize(70, 32);
+            }
+            catch { }
+
+            // 2. [중요] 0.1초 정도 기다렸다가 (윈도우가 창 크기를 바꿀 시간 주기)
+            System.Threading.Thread.Sleep(100);
+
+            // 3. 화면을 깨끗하게 지웁니다! (이게 없어서 글자가 겹친 것)
+            Console.Clear();
         }
 
         // [최적화 1] 변하지 않는 배경과 테두리는 게임 시작 때 한 번만 그린다.
