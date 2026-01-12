@@ -13,6 +13,7 @@ namespace RhythmGameOOP
         private NoteManager noteManager;
         private ScoreManager scoreManager;
         private Renderer renderer;
+        private double songDuration = 0;
 
         public RhythmGame()
         {
@@ -37,8 +38,13 @@ namespace RhythmGameOOP
                 return null; // 오류 시 null 반환
             }
 
-            // 음악 재생 (볼륨 제거됨)
-            try { audio.Play(GlobalSettings.MusicPath); }
+            // 음악 재생
+            try 
+            {
+                audio.Play(GlobalSettings.MusicPath);
+                songDuration = audio.GetDuration() + 2.0;
+            }
+
             catch { }
 
             renderer.DrawStaticUI();
@@ -65,13 +71,8 @@ namespace RhythmGameOOP
                 if (Console.KeyAvailable)
                 {
                     var key = Console.ReadKey(true).Key;
-
-                    // ESC 누르면 게임 종료
                     if (key == ConsoleKey.Escape) isRunning = false;
-                    else
-                    {
-                        ProcessKey(key);
-                    }
+                    else ProcessKey(key);
                 }
                 Thread.Sleep(1);
             }
@@ -99,6 +100,7 @@ namespace RhythmGameOOP
                     target.IsHit = true;
                     target.Y = GlobalSettings.TrackHeight + 5;
                 }
+                // 여기서 틀려도 Miss 처리는 NoteManager가 바닥 닿을 때 처리함
             }
         }
 
@@ -107,6 +109,19 @@ namespace RhythmGameOOP
             while (isRunning)
             {
                 double currentTime = stopwatch.Elapsed.TotalSeconds;
+
+                // 1. 노래 끝났는지 체크
+                if (songDuration > 0 && currentTime > songDuration)
+                {
+                    isRunning = false;
+                }
+
+                // [★추가] 목숨 다 잃었는지 체크 (즉시 종료)
+                if (scoreManager.IsDead)
+                {
+                    isRunning = false;
+                }
+
                 noteManager.SpawnLogic(currentTime);
                 noteManager.UpdateNotes(scoreManager);
                 renderer.Draw(scoreManager, noteManager.GetNotes());
