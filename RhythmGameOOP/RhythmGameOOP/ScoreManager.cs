@@ -53,7 +53,6 @@ namespace RhythmGameOOP
             CurrentCombo = 0;
         }
 
-        // [신규 기능] 점수에 따른 랭크 계산 (S, A, B, C, F)
         public string GetRank()
         {
             if (Score >= 5000) return "S"; // 기준 점수는 원하는 대로 수정하세요

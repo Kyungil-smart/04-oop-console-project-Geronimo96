@@ -39,16 +39,19 @@ namespace RhythmGameOOP
             }
 
             // 음악 재생
-            try 
+            try
             {
                 audio.Play(GlobalSettings.MusicPath);
                 songDuration = audio.GetDuration() + 2.0;
+
+                // [★ 디버깅용 코드 추가] 
+                // 실행하면 검은 화면 맨 위에 숫자가 뜰 겁니다.
+                // 이 숫자가 2.0 근처라면 노래 로딩에 실패한 것입니다.
+                Console.WriteLine($"\n\n   [디버그] 인식된 노래 길이: {songDuration - 2.0} 초");
+                Console.WriteLine("   (숫자가 0이면 파일 문제, 정상이면 스피커 문제입니다)");
+                Thread.Sleep(3000); // 3초 동안 멈춰서 보여줌
             }
-
             catch { }
-
-            renderer.DrawStaticUI();
-            stopwatch.Start();
 
             Thread gameThread = new Thread(GameLoop);
             gameThread.Start();

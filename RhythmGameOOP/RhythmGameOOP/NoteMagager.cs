@@ -58,9 +58,10 @@ namespace RhythmGameOOP
                     // 맞추지 못한 노트라면 콤보 초기화 (MISS 처리)
                     if (!notes[i].IsHit)
                     {
-                        scoreManager.ResetCombo();
+                        scoreManager.ResetCombo();// 여기서 목숨 -1
                     }
-                    // 리스트에서 삭제 (메모리 절약)
+                    // 미스 처리를 했든 안 했든, 바닥 지난 노트는 무조건 삭제!
+                    // 이걸 안 하면 다음 프레임에 또 미스 처리가 되어 목숨이 순삭됨
                     notes.RemoveAt(i);
                 }
             }
