@@ -1,37 +1,37 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\",
+  "WorkspaceRootPath": "C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|c:\\users\\kga1\\source\\repos\\rhythmgameoop\\rhythmgameoop\\musicselectscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|c:\\users\\kga1\\documents\\github\\04-oop-console-project-geronimo96\\rhythmgameoop\\rhythmgameoop\\musicselectscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|solutionrelative:rhythmgameoop\\musicselectscene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\rhythmgameoop\\audioengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\rhythmgameoop\\audioengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|solutionrelative:rhythmgameoop\\audioengine.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\rhythmgameoop\\globalsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\rhythmgameoop\\globalsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|solutionrelative:rhythmgameoop\\globalsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\rhythmgameoop\\rhythmgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\rhythmgameoop\\rhythmgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|solutionrelative:rhythmgameoop\\rhythmgame.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\rhythmgameoop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\rhythmgameoop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|solutionrelative:rhythmgameoop\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\rhythmgameoop\\song.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\rhythmgameoop\\song.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|solutionrelative:rhythmgameoop\\song.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\rhythmgameoop\\renderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\rhythmgameoop\\renderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|solutionrelative:rhythmgameoop\\renderer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\rhythmgameoop\\scoremanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\rhythmgameoop\\scoremanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F97363B2-29A6-40EF-A957-B288AE54502A}|RhythmGameOOP\\RhythmGameOOP.csproj|solutionrelative:rhythmgameoop\\scoremanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -48,23 +48,27 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "MusicSelectScene.cs",
-              "DocumentMoniker": "C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\RhythmGameOOP\\MusicSelectScene.cs",
+              "DocumentMoniker": "C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\RhythmGameOOP\\MusicSelectScene.cs",
               "RelativeDocumentMoniker": "RhythmGameOOP\\MusicSelectScene.cs",
-              "ToolTip": "C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\RhythmGameOOP\\MusicSelectScene.cs",
+              "ToolTip": "C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\RhythmGameOOP\\MusicSelectScene.cs",
               "RelativeToolTip": "RhythmGameOOP\\MusicSelectScene.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAA5wCcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-08T07:56:29.506Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{c6f34f0d-7ae5-4f3a-be61-fe0c21ae9eb8}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "AudioEngine.cs",
-              "DocumentMoniker": "C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\RhythmGameOOP\\AudioEngine.cs",
+              "DocumentMoniker": "C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\RhythmGameOOP\\AudioEngine.cs",
               "RelativeDocumentMoniker": "RhythmGameOOP\\AudioEngine.cs",
-              "ToolTip": "C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\RhythmGameOOP\\AudioEngine.cs",
+              "ToolTip": "C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\RhythmGameOOP\\AudioEngine.cs",
               "RelativeToolTip": "RhythmGameOOP\\AudioEngine.cs",
               "ViewState": "AgIAADEAAAAAAAAAAAAswAsAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -74,9 +78,9 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "GlobalSettings.cs",
-              "DocumentMoniker": "C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\RhythmGameOOP\\GlobalSettings.cs",
+              "DocumentMoniker": "C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\RhythmGameOOP\\GlobalSettings.cs",
               "RelativeDocumentMoniker": "RhythmGameOOP\\GlobalSettings.cs",
-              "ToolTip": "C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\RhythmGameOOP\\GlobalSettings.cs",
+              "ToolTip": "C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\RhythmGameOOP\\GlobalSettings.cs",
               "RelativeToolTip": "RhythmGameOOP\\GlobalSettings.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -86,9 +90,9 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "RhythmGame.cs",
-              "DocumentMoniker": "C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\RhythmGameOOP\\RhythmGame.cs",
+              "DocumentMoniker": "C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\RhythmGameOOP\\RhythmGame.cs",
               "RelativeDocumentMoniker": "RhythmGameOOP\\RhythmGame.cs",
-              "ToolTip": "C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\RhythmGameOOP\\RhythmGame.cs",
+              "ToolTip": "C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\RhythmGameOOP\\RhythmGame.cs",
               "RelativeToolTip": "RhythmGameOOP\\RhythmGame.cs",
               "ViewState": "AgIAAEQAAAAAAAAAAADwvygAAABDAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -98,9 +102,9 @@
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "Renderer.cs",
-              "DocumentMoniker": "C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\RhythmGameOOP\\Renderer.cs",
+              "DocumentMoniker": "C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\RhythmGameOOP\\Renderer.cs",
               "RelativeDocumentMoniker": "RhythmGameOOP\\Renderer.cs",
-              "ToolTip": "C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\RhythmGameOOP\\Renderer.cs",
+              "ToolTip": "C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\RhythmGameOOP\\Renderer.cs",
               "RelativeToolTip": "RhythmGameOOP\\Renderer.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwFgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -110,9 +114,9 @@
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\RhythmGameOOP\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\RhythmGameOOP\\Program.cs",
               "RelativeDocumentMoniker": "RhythmGameOOP\\Program.cs",
-              "ToolTip": "C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\RhythmGameOOP\\Program.cs",
+              "ToolTip": "C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\RhythmGameOOP\\Program.cs",
               "RelativeToolTip": "RhythmGameOOP\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -122,9 +126,9 @@
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Song.cs",
-              "DocumentMoniker": "C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\RhythmGameOOP\\Song.cs",
+              "DocumentMoniker": "C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\RhythmGameOOP\\Song.cs",
               "RelativeDocumentMoniker": "RhythmGameOOP\\Song.cs",
-              "ToolTip": "C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\RhythmGameOOP\\Song.cs",
+              "ToolTip": "C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\RhythmGameOOP\\Song.cs",
               "RelativeToolTip": "RhythmGameOOP\\Song.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -134,9 +138,9 @@
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "ScoreManager.cs",
-              "DocumentMoniker": "C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\RhythmGameOOP\\ScoreManager.cs",
+              "DocumentMoniker": "C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\RhythmGameOOP\\ScoreManager.cs",
               "RelativeDocumentMoniker": "RhythmGameOOP\\ScoreManager.cs",
-              "ToolTip": "C:\\Users\\KGA1\\source\\repos\\RhythmGameOOP\\RhythmGameOOP\\ScoreManager.cs",
+              "ToolTip": "C:\\Users\\KGA1\\Documents\\GitHub\\04-oop-console-project-Geronimo96\\RhythmGameOOP\\RhythmGameOOP\\ScoreManager.cs",
               "RelativeToolTip": "RhythmGameOOP\\ScoreManager.cs",
               "ViewState": "AgIAABQAAAAAAAAAAAAswCAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
