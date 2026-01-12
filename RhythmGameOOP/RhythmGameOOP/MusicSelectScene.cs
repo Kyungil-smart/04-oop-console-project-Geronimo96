@@ -25,7 +25,7 @@ namespace RhythmGameOOP
             songs.Add(new Song("1. yung kai - blue", path1, 97)); // 제목, 경로, BPM
 
             // 곡 2
-            string path2 = Path.Combine(basePath, "Songs", "BSS-파이팅해야지Feat.이영지.wav");
+            string path2 = Path.Combine(basePath, "Songs", "BSS-Fighting.wav");
             songs.Add(new Song("2. BSS - 파이팅 해야지 (Feat. 이영지)", path2, 152));
 
             // 필요한 만큼 계속 추가 가능...
