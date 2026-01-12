@@ -58,6 +58,9 @@ namespace RhythmGameOOP
             Console.SetCursorPosition(8, JudgeRow);
             Console.Write(scoreMgr.LastJudge.PadRight(10));
 
+            // [★추가] 오른쪽에 하트 그리기
+            DrawHearts(scoreMgr.Life);
+
             // 2. 트랙(노트) 갱신
             trackBuffer.Clear();
             for (int y = 0; y < GlobalSettings.TrackHeight; y++)
