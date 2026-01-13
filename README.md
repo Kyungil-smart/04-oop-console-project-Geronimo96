@@ -28,6 +28,14 @@ C# 언어와 객체지향(OOP) 설계를 기반으로 제작되었으며, `winmm
 | | `ESC` | 게임 종료 / 뒤로 가기 |
 | **결과창** | `Enter` | 메뉴로 돌아가기 |
 
+## 🛠️ 기술 스택 및 구현 원리 (Tech Specs)
+
+* **Language:** C# (.NET)
+* **Rendering:** Console GUI (Double Buffering simulation using `StringBuilder`)
+* **Audio:** Windows Multimedia API (`winmm.dll` / `mciSendString`)
+* **Input Handling:** Non-blocking Input (`Console.KeyAvailable`)
+* **Timing:** `Stopwatch` class for high-precision delta time calculation
+
 ## 🛠️ 설치 및 실행 방법 (How to Run)
 
 이 프로젝트는 **Visual Studio**와 **.NET** 환경에서 개발되었습니다.
@@ -42,17 +50,26 @@ C# 언어와 객체지향(OOP) 설계를 기반으로 제작되었으며, `winmm
     * `출력 디렉터리로 복사` 항목을 **`새 버전이면 복사`**로 설정해야 합니다.
 4.  `Ctrl + F5`를 눌러 빌드 및 실행합니다.
 
-## 📁 프로젝트 구조 (Project Structure)
+## 📂 프로젝트 구조 (Project Structure)
 
-* **Program.cs**: 프로그램 진입점 및 전체 흐름 관리
-* **RhythmGame.cs**: 게임 루프 및 주요 로직 제어
-* **GlobalSettings.cs**: BPM, 키 설정, 경로 등 전역 설정 관리
-* **AudioEngine.cs**: `winmm.dll` 기반 오디오 재생기
-* **Renderer.cs**: 더블 버퍼링 기반 콘솔 화면 출력
-* **NoteManager.cs**: 노트 생성 및 이동 로직
-* **ScoreManager.cs**: 점수, 콤보, 랭크 계산
-* **Scenes/**: `MusicSelectScene.cs`, `ResultScene.cs` 등 화면별 클래스
-* **Songs/**: 게임에 사용되는 음악 파일 저장소
+```text
+RhythmGameOOP/
+├── Program.cs           # 메인 진입점
+├── Game/
+│   ├── RhythmGame.cs    # 게임 메인 루프 (Update/Render 관리)
+│   ├── NoteManager.cs   # 노트 생성 및 이동, 판정 로직
+│   ├── ScoreManager.cs  # 점수, 콤보, 체력(Life) 관리
+│   └── Renderer.cs      # 화면 출력 (UI 위치 자동 계산 및 그리기)
+├── Scenes/
+│   ├── MusicSelectScene.cs # 곡 및 난이도 선택 메뉴
+│   ├── ResultScene.cs      # 결과(랭크) 화면
+│   └── GameOverScene.cs    # 게임 오버 화면
+├── Systems/
+│   ├── AudioEngine.cs   # winmm.dll 래퍼 (음악 재생, 볼륨 조절)
+│   └── GlobalSettings.cs # 키 설정, 모드(4K/8K), 화면 상수 관리
+└── Objects/
+    ├── Note.cs          # 노트 데이터 객체
+    └── Song.cs          # 곡 정보 객체
 
 ## 🎵 곡 추가 방법 (Adding Songs)
 
