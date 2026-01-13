@@ -11,6 +11,9 @@ namespace RhythmGameOOP
         private const int JudgeRow = 2;
         private const int TrackStartRow = 4;
 
+        // [신규 기능] 각 레인별 이펙트 지속 시간 (0이면 꺼짐, 숫자가 있으면 켜짐)
+        private int[] effectTimers = new int[4];
+
         // 문자열을 조립할 임시 공간 (StringBuilder)
         private StringBuilder trackBuffer = new StringBuilder();
 
@@ -29,6 +32,15 @@ namespace RhythmGameOOP
 
             // 3. 화면 싹 지우기
             Console.Clear();
+        }
+
+        // [신규 기능] 외부에서 이 함수를 부르면 해당 레인이 번쩍임!
+        public void TriggerEffect(int lane)
+        {
+            if (lane >= 0 && lane < 4)
+            {
+                effectTimers[lane] = 3; // 3프레임 동안 유지
+            }
         }
 
         // [최적화 1] 변하지 않는 배경과 테두리는 게임 시작 때 한 번만 그린다.
@@ -82,20 +94,31 @@ namespace RhythmGameOOP
                 {
                     string shape = "       "; // 기본은 빈 공간
 
-                    // 판정선 위치 표시
-                    if (y == GlobalSettings.HitLine) shape = "-------";
+                    // 판정선 그리기 & 이펙트 처리
+                    if (y == GlobalSettings.HitLine)
+                    {
+                        // [핵심] 이펙트 타이머가 남아있으면 빛나는 모양으로 그림
+                        if (effectTimers[x] > 0)
+                        {
+                            shape = " [###] "; // 눌렀을 때 모양
+                            effectTimers[x]--; // 시간 감소
+                        }
+                        else
+                        {
+                            shape = "-------"; // 평소 모양
+                        }
+                    }
 
-                    // 현재 좌표(x, y)에 노트가 있는지 검사
+                    // 노트 그리기 (이펙트 위에 덮어씌워지지 않게 주의)
                     foreach (var note in notes)
                     {
                         if (note.LaneIndex == x && !note.IsHit)
                         {
-                            // 노트의 Y좌표와 현재 그리는 줄(y)이 가까우면 노트 그리기
                             if (Math.Abs(note.Y - y) < 0.6f)
-                                shape = "  [O]  ";
+                                shape = "  (O)  "; // 노트 모양
                         }
                     }
-                    trackBuffer.Append(shape + "|"); // 칸 구분선 추가
+                    trackBuffer.Append(shape + "|");
                 }
 
                 // 완성된 한 줄을 화면의 정확한 위치에 덮어쓰기

@@ -24,12 +24,12 @@ namespace RhythmGameOOP
             audio = new AudioEngine();
         }
 
-        // [변경] 게임이 끝나면 점수 정보(ScoreManager)를 반환합니다.
+        // 게임이 끝나면 점수 정보(ScoreManager)를 반환합니다.
         public ScoreManager Run()
         {
             renderer.Init();
 
-            // [추가 1] 배경(트랙, 점수판 등)을 먼저 그려야 합니다.
+            // 배경(트랙, 점수판 등)을 먼저 그려야 합니다.
             renderer.DrawStaticUI();
 
             // 파일 존재 여부 확인
@@ -49,7 +49,7 @@ namespace RhythmGameOOP
             }
             catch { }
 
-            // [추가 2] ★★★ 가장 중요! 시간을 흐르게 해야 합니다. ★★★
+            // ★★★ 가장 중요! 시간을 흐르게 해야 합니다. ★★★
             stopwatch.Start();
 
             Thread gameThread = new Thread(GameLoop);
@@ -84,6 +84,9 @@ namespace RhythmGameOOP
         {
             int laneIndex = Array.IndexOf(GlobalSettings.Keys, key);
             if (laneIndex == -1) return;
+
+            // [추가] 키를 누르면 무조건 이펙트 발동! (맞췄든 틀렸든 시각적 피드백)
+            renderer.TriggerEffect(laneIndex);
 
             Note target = noteManager.GetClosestNote(laneIndex);
 

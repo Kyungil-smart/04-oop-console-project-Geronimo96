@@ -3,11 +3,13 @@ using System.Collections.Generic;
 
 namespace RhythmGameOOP
 {
+
     public class NoteManager
     {
         // 화면에 존재하는 모든 노트를 담아두는 리스트
         private List<Note> notes;
         private Random rand; // 랜덤 생성을 위한 도구
+   
 
         // 타이밍 계산 변수들
         private double lastSpawnTime; // 마지막으로 노트가 나온 시간
@@ -21,22 +23,25 @@ namespace RhythmGameOOP
             // 60초 / BPM = 1박자 시간
             // 예: BPM 60이면 1초마다, BPM 120이면 0.5초마다 생성
             spawnInterval = 60.0 / GlobalSettings.BPM;
+
         }
 
         // [핵심 로직 1] 노트 생성 (시간 체크)
+        // [변경] 시간만 되면 대기열에서 노트를 꺼냅니다.
         public void SpawnLogic(double currentTime)
         {
-            // 1. 노래 시작 후 SyncDelay 시간이 지났는지 확인
+            // 1. 노래 시작 후 싱크 시간 지남?
             if (currentTime > GlobalSettings.SyncDelay)
             {
-                // 2. 마지막 생성 시간보다 '생성 주기(interval)'만큼 시간이 흘렀는지 확인
+                // 2. 마지막 생성 후 '간격'만큼 시간 지남?
                 if (currentTime - lastSpawnTime > spawnInterval)
                 {
-                    // 랜덤한 레인(0~3)을 뽑아서 리스트에 추가
+                    // [핵심] 현재 모드(4키/8키)에 맞춰서 랜덤 레인 뽑기
+                    // LaneCount가 4면 (0~3), 8이면 (0~7) 나옴
                     int lane = rand.Next(0, GlobalSettings.LaneCount);
+
                     notes.Add(new Note(lane));
 
-                    // 마지막 생성 시간을 현재 시간으로 갱신
                     lastSpawnTime = currentTime;
                 }
             }
