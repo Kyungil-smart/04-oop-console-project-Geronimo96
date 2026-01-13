@@ -22,10 +22,14 @@ namespace RhythmGameOOP
             Console.CursorVisible = false;
             try
             {
-                // 1. 창 크기 설정 (70칸)
-                Console.SetWindowSize(70, 32);
+                // [수정] 1. 하드모드면 창을 더 넓게 설정 (90칸), 아니면 70칸
+                int width = GlobalSettings.IsHardMode ? 90 : 70;
+                Console.SetWindowSize(width, 32);
             }
             catch { }
+
+            // 이펙트 타이머도 8개까지 커버되도록 재할당
+            effectTimers = new int[8];
 
             // 2. 윈도우가 적용할 시간 주기
             System.Threading.Thread.Sleep(100);
@@ -52,14 +56,28 @@ namespace RhythmGameOOP
             Console.WriteLine(" JUDGE: READY");
             Console.WriteLine("========================================");
 
-            // 빈 트랙 미리 그리기
+            // 트랙 빈 공간 그리기
             for (int i = 0; i < GlobalSettings.TrackHeight; i++)
             {
-                Console.WriteLine("   |                           |");
+                // 레인 개수만큼 반복해서 파이프(|)를 그립니다.
+                string line = "   |";
+                for (int k = 0; k < GlobalSettings.LaneCount; k++)
+                {
+                    line += "                           |"; // 칸 너비 맞춤
+                }
+                // 여기서는 실제 모양이 loop에서 그려지므로 생략하고, Draw 함수에서 처리하게 둠
             }
 
+            // [수정] 바닥 키 가이드 출력 (동적으로 변경)
             Console.WriteLine("========================================");
-            Console.WriteLine("    |   D   |   F   |   J   |   K   |");
+            if (GlobalSettings.IsHardMode)
+            {
+                Console.WriteLine("    | A | S | D | F | H | J | K | L |");
+            }
+            else
+            {
+                Console.WriteLine("    |   D   |   F   |   J   |   K   |");
+            }
             Console.WriteLine("========================================");
 
             // [★추가] 하트 UI 설명 텍스트
