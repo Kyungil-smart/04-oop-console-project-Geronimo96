@@ -271,7 +271,7 @@ namespace RhythmGameOOP
             Console.SetCursorPosition(uiLeftX, TrackStartRow + 2);
             Console.ForegroundColor = ConsoleColor.Red; // 빨간색
 
-            for (int i = 0; i < 10; i++) // 최대 체력 10칸
+            for (int i = 0; i < 15; i++) // 최대 체력 15칸
             {
                 if (i < life)
                     Console.Write("♥ "); // 남은 목숨
