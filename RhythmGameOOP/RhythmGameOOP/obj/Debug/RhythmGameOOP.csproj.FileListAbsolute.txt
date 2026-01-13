@@ -18,3 +18,5 @@ C:\Users\KGA1\Documents\GitHub\04-oop-console-project-Geronimo96\RhythmGameOOP\R
 C:\Users\KGA1\Documents\GitHub\04-oop-console-project-Geronimo96\RhythmGameOOP\RhythmGameOOP\obj\Debug\RhythmGameOOP.exe
 C:\Users\KGA1\Documents\GitHub\04-oop-console-project-Geronimo96\RhythmGameOOP\RhythmGameOOP\obj\Debug\RhythmGameOOP.pdb
 C:\Users\KGA1\Documents\GitHub\04-oop-console-project-Geronimo96\RhythmGameOOP\RhythmGameOOP\bin\Debug\Songs\BSS-Fighting.wav
+C:\Users\KGA1\Documents\GitHub\04-oop-console-project-Geronimo96\RhythmGameOOP\RhythmGameOOP\bin\Debug\Songs\BSS-Fighting.mp3
+C:\Users\KGA1\Documents\GitHub\04-oop-console-project-Geronimo96\RhythmGameOOP\RhythmGameOOP\bin\Debug\Songs\yung-kai-blue.mp3
