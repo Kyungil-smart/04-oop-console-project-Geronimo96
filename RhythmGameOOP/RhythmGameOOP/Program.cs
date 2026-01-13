@@ -33,7 +33,7 @@ namespace RhythmGameOOP
                 // 3. 결과 화면 출력 (게임이 정상적으로 끝난 경우에만)
                 if (finalResult != null)
                 {
-                    // [★수정] 게임 결과 처리 로직 분기
+                    // 게임 결과 처리 로직 분기
 
                     if (finalResult.IsDead)
                     {
