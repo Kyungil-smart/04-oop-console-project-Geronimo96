@@ -45,6 +45,9 @@ namespace RhythmGameOOP
             try
             {
                 audio.Play(GlobalSettings.MusicPath);
+                // [★추가] 노래 틀자마자 저장된 볼륨으로 설정!
+                audio.SetVolume(GlobalSettings.Volume);
+
                 songDuration = audio.GetDuration() + 2.0;
             }
             catch { }
@@ -73,8 +76,27 @@ namespace RhythmGameOOP
                 if (Console.KeyAvailable)
                 {
                     var key = Console.ReadKey(true).Key;
-                    if (key == ConsoleKey.Escape) isRunning = false;
-                    else ProcessKey(key);
+
+                    if (key == ConsoleKey.Escape)
+                    {
+                        isRunning = false;
+                    }
+                    // [★추가] 위쪽 화살표: 소리 키우기
+                    else if (key == ConsoleKey.UpArrow)
+                    {
+                        GlobalSettings.Volume = Math.Min(100, GlobalSettings.Volume + 5); // 100 넘지 않게
+                        audio.SetVolume(GlobalSettings.Volume);
+                    }
+                    // [★추가] 아래쪽 화살표: 소리 줄이기
+                    else if (key == ConsoleKey.DownArrow)
+                    {
+                        GlobalSettings.Volume = Math.Max(0, GlobalSettings.Volume - 5); // 0 밑으로 안 가게
+                        audio.SetVolume(GlobalSettings.Volume);
+                    }
+                    else
+                    {
+                        ProcessKey(key); // 게임 키(D,F,J,K) 처리
+                    }
                 }
                 Thread.Sleep(1);
             }

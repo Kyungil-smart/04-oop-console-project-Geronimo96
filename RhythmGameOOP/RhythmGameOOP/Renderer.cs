@@ -169,6 +169,8 @@ namespace RhythmGameOOP
             Console.SetCursorPosition(uiLeftX, TrackStartRow);
             Console.Write("[ LIFE ]");
 
+            Console.SetCursorPosition(uiLeftX, TrackStartRow + 4);
+            Console.Write($"VOL: {GlobalSettings.Volume}%  ");
         }
 
 
@@ -189,6 +191,9 @@ namespace RhythmGameOOP
             Console.SetCursorPosition(8, 2);
             Console.Write(scoreMgr.LastJudge.PadRight(10)); // PERFECT, MISS 등 출력
 
+            // 볼륨 갱신 (변했을 수도 있으니 계속 그림)
+            Console.SetCursorPosition(uiLeftX + 5, TrackStartRow + 4);
+            Console.Write($"{GlobalSettings.Volume}%  ");
 
             // -----------------------------------------------------
             // 2. 하트(생명력) 그리기
@@ -271,7 +276,7 @@ namespace RhythmGameOOP
             Console.SetCursorPosition(uiLeftX, TrackStartRow + 2);
             Console.ForegroundColor = ConsoleColor.Red; // 빨간색
 
-            for (int i = 0; i < 15; i++) // 최대 체력 15칸
+            for (int i = 0; i < 10; i++) // 최대 체력 10칸
             {
                 if (i < life)
                     Console.Write("♥ "); // 남은 목숨

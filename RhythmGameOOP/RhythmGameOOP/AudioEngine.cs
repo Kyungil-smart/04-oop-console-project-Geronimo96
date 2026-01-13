@@ -11,6 +11,19 @@ namespace RhythmGameOOP
         [DllImport("winmm.dll")]
         private static extern long mciSendString(string strCommand, StringBuilder strReturn, int iReturnLength, IntPtr hwndCallback);
 
+        // "소리 크기 바꿔줘" 라고 명령하는 함수
+        public void SetVolume(int volume)
+        {
+            if (string.IsNullOrEmpty(currentAlias)) return;
+
+            // 우리가 쓰는 0~100 값을 윈도우 기준 0~1000으로 변환
+            int mciVolume = volume * 10;
+
+            // 명령어 전송: setaudio 별명 volume to 숫자
+            string command = $"setaudio {currentAlias} volume to {mciVolume}";
+            mciSendString(command, null, 0, IntPtr.Zero);
+        }
+
         // 현재 재생 중인 음악의 별명(ID)
         private string currentAlias;
 
