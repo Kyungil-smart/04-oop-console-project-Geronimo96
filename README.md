@@ -1,7 +1,7 @@
 콘솔 프로젝트로 구현한 리듬 게임 입니다.
 # 🎵 C# Console Rhythm Game
 
-Windows 콘솔(터미널) 환경에서 실행되는 **4키(4-Key) 리듬 게임**입니다.
+Windows 콘솔(터미널) 환경에서 실행되는 **4키(4-Key) 리듬 게임**입니다.   
 C# 언어와 객체지향(OOP) 설계를 기반으로 제작되었으며, `winmm.dll`을 활용한 오디오 재생과 더블 버퍼링 렌더링을 지원합니다.
 
 ![Game Screenshot](https://raw.githubusercontent.com/Kyungil-smart/04-oop-console-project-Geronimo96/refs/heads/main/Images/20260112_112005_1.png)
