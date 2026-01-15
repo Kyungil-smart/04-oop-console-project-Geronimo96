@@ -2,44 +2,41 @@
 
 namespace RhythmGameOOP
 {
-    // [점수 관리 클래스] 점수, 콤보, 랭크 계산을 담당합니다.
     public class ScoreManager
     {
-        // 외부에서 읽기만 가능(get), 수정 불가(private set)
+        // 외부에서는 읽기만 가능하고 수정은 불가능하게 설정 (보안)
         public int Score { get; private set; }
-        public int MaxCombo { get; private set; } // 최대 콤보 기록용
+        public int MaxCombo { get; private set; }
         public int CurrentCombo { get; private set; }
         public string LastJudge { get; private set; } = "READY";
 
-        // [★추가] 목숨 (기본 15개)
+        // 생명력 (기본 15칸)
         public int Life { get; private set; } = 15;
 
-        // [★추가] 게임 오버 상태 확인
+        // 생명력이 0 이하면 죽음 상태
         public bool IsDead => Life <= 0;
 
-        // 점수 추가
+        // [점수 획득 함수]
         public void AddScore(int amount, string judgeText)
         {
             Score += amount;
             CurrentCombo++;
             LastJudge = judgeText;
 
-            // 최대 콤보 갱신 (현재 콤보가 기록보다 높으면 갱신)
-            if (CurrentCombo > MaxCombo)
-            {
-                MaxCombo = CurrentCombo;
-            }
+            // 최대 콤보 갱신
+            if (CurrentCombo > MaxCombo) MaxCombo = CurrentCombo;
+
+            // 보너스: 콤보 10 단위마다 생명력 1 회복 (최대 15)
+            if (CurrentCombo % 10 == 0 && Life < 15) Life++;
         }
 
-        // 콤보 초기화 (틀렸을 때)
+        // [미스 처리 함수]
         public void ResetCombo()
         {
-            if (Life > 0)
-            {
-                Life--;
-            }
+            // 생명력 감소
+            if (Life > 0) Life--;
 
-            //콤보 초기화 로직
+            // 콤보가 있었다면 점수 차감 패널티
             if (CurrentCombo > 0)
             {
                 LastJudge = "MISS";
@@ -47,15 +44,15 @@ namespace RhythmGameOOP
             }
             else
             {
-                LastJudge = "MISS"; // 콤보가 없어도 미스 뜨게 처리 
-
+                LastJudge = "MISS";
             }
-            CurrentCombo = 0;
+            CurrentCombo = 0; // 콤보 초기화
         }
 
+        // 점수에 따른 랭크 계산
         public string GetRank()
         {
-            if (Score >= 5000) return "S"; // 기준 점수는 원하는 대로 수정하세요
+            if (Score >= 5000) return "S";
             if (Score >= 3000) return "A";
             if (Score >= 1500) return "B";
             if (Score >= 500) return "C";

@@ -7,7 +7,7 @@ namespace RhythmGameOOP
         public void Show()
         {
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Red; // 빨간색
+            Console.ForegroundColor = ConsoleColor.Red; // 빨간색으로 경고 느낌
 
             Console.WriteLine("\n\n\n\n");
             Console.WriteLine("    ##########################################");
@@ -21,12 +21,10 @@ namespace RhythmGameOOP
             Console.WriteLine("             목숨을 모두 잃었습니다...");
             Console.WriteLine("\n\n         [Enter] 키를 누르면 메뉴로 돌아갑니다.");
 
+            // 엔터 키 대기
             while (true)
             {
-                if (Console.KeyAvailable)
-                {
-                    if (Console.ReadKey(true).Key == ConsoleKey.Enter) break;
-                }
+                if (Console.KeyAvailable && Console.ReadKey(true).Key == ConsoleKey.Enter) break;
             }
         }
     }

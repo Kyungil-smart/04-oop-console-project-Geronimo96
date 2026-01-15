@@ -2,9 +2,9 @@
 {
     public class Song
     {
-        public string Title { get; set; }     // 곡 제목 (화면에 표시될 이름)
-        public string FilePath { get; set; }  // 파일 경로
-        public double BPM { get; set; }       // BPM
+        public string Title { get; set; }     // 화면에 표시될 제목
+        public string FilePath { get; set; }  // 실제 파일 위치
+        public double BPM { get; set; }       // 곡의 빠르기
 
         public Song(string title, string path, double bpm)
         {

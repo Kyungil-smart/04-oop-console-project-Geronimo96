@@ -7,16 +7,19 @@ namespace RhythmGameOOP
     // [게임 메인 로직]
     public class RhythmGame
     {
-        private bool isRunning = true;
+        private bool isRunning = true; // 게임 실행 여부
+
+        // 각 역할별 매니저들
         private AudioEngine audio;
-        private Stopwatch stopwatch;
+        private Stopwatch stopwatch; // 시간 측정용
         private NoteManager noteManager;
         private ScoreManager scoreManager;
         private Renderer renderer;
-        private double songDuration = 0;
+        private double songDuration = 0; // 노래 길이
 
         public RhythmGame()
         {
+            // 각 매니저들 생성
             noteManager = new NoteManager();
             scoreManager = new ScoreManager();
             renderer = new Renderer();
@@ -24,135 +27,120 @@ namespace RhythmGameOOP
             audio = new AudioEngine();
         }
 
-        // 게임이 끝나면 점수 정보(ScoreManager)를 반환합니다.
+        // [게임 실행 함수]
         public ScoreManager Run()
         {
-            renderer.Init();
+            renderer.Init(); // 화면 초기화
+            renderer.DrawStaticUI(); // 배경 그리기
 
-            // 배경(트랙, 점수판 등)을 먼저 그려야 합니다.
-            renderer.DrawStaticUI();
-
-            // 파일 존재 여부 확인
+            // 음악 파일이 실제로 있는지 확인
             if (!System.IO.File.Exists(GlobalSettings.MusicPath))
             {
                 Console.Clear();
-                Console.WriteLine("오류: 파일을 찾을 수 없습니다.");
+                Console.WriteLine("오류: 음악 파일을 찾을 수 없습니다.");
                 Console.ReadKey();
-                return null; // 오류 시 null 반환
+                return null;
             }
 
-            // 음악 재생
-            try
-            {
-                audio.Play(GlobalSettings.MusicPath);
-                // [★추가] 노래 틀자마자 저장된 볼륨으로 설정!
-                audio.SetVolume(GlobalSettings.Volume);
+            // 음악 재생 및 총 길이 계산
+            audio.Play(GlobalSettings.MusicPath);
+            songDuration = audio.GetDuration() + 2.0; // 노래 끝나고 2초 정도 여유 줌
 
-                songDuration = audio.GetDuration() + 2.0;
-            }
-            catch { }
-
-            // ★★★ 가장 중요! 시간을 흐르게 해야 합니다. ★★★
+            // 정확한 타이밍 계산을 위해 스톱워치 시작
             stopwatch.Start();
 
+            // 게임 루프(화면 갱신, 노트 이동)를 별도 스레드로 실행
             Thread gameThread = new Thread(GameLoop);
             gameThread.Start();
 
-            HandleInput(); // 키 입력 대기
+            // 메인 스레드는 키 입력만 전담해서 반응 속도를 높임
+            HandleInput();
 
-            // 게임 종료 처리
+            // 키 입력 루프가 끝나면(ESC 등) 정리 작업 수행
             isRunning = false;
-            gameThread.Join();
-            audio.Stop();
+            gameThread.Join(); // 게임 스레드가 완전히 끝날 때까지 대기
+            audio.Stop(); // 음악 정지
 
-            // 게임 결과(점수판)를 반환
-            return scoreManager;
+            return scoreManager; // 최종 점수판 반환
         }
 
+        // [키 입력 처리 루프]
         private void HandleInput()
         {
             while (isRunning)
             {
+                // 키 입력이 있을 때만 처리
                 if (Console.KeyAvailable)
                 {
                     var key = Console.ReadKey(true).Key;
 
-                    if (key == ConsoleKey.Escape)
-                    {
-                        isRunning = false;
-                    }
-                    // [★추가] 위쪽 화살표: 소리 키우기
-                    else if (key == ConsoleKey.UpArrow)
-                    {
-                        GlobalSettings.Volume = Math.Min(100, GlobalSettings.Volume + 5); // 100 넘지 않게
-                        audio.SetVolume(GlobalSettings.Volume);
-                    }
-                    // [★추가] 아래쪽 화살표: 소리 줄이기
-                    else if (key == ConsoleKey.DownArrow)
-                    {
-                        GlobalSettings.Volume = Math.Max(0, GlobalSettings.Volume - 5); // 0 밑으로 안 가게
-                        audio.SetVolume(GlobalSettings.Volume);
-                    }
+                    if (key == ConsoleKey.Escape) isRunning = false; // ESC 누르면 종료
                     else
                     {
-                        ProcessKey(key); // 게임 키(D,F,J,K) 처리
+                        // 게임 조작키(D,F,J,K 등)인지 확인하고 처리
+                        ProcessKey(key);
                     }
                 }
-                Thread.Sleep(1);
+                Thread.Sleep(1); // CPU 점유율 폭주 방지용 대기
             }
         }
 
+        // [키 판정 로직]
         private void ProcessKey(ConsoleKey key)
         {
+            // 눌린 키가 현재 모드(4키/8키) 설정에 있는 키인지 확인
             int laneIndex = Array.IndexOf(GlobalSettings.Keys, key);
-            if (laneIndex == -1) return;
+            if (laneIndex == -1) return; // 게임 키가 아니면 무시
 
-            // [추가] 키를 누르면 무조건 이펙트 발동! (맞췄든 틀렸든 시각적 피드백)
+            // 1. 시각적 이펙트 발동 (맞추든 틀리든 반응)
             renderer.TriggerEffect(laneIndex);
 
+            // 2. 해당 라인에서 판정할 노트 가져오기
             Note target = noteManager.GetClosestNote(laneIndex);
 
             if (target != null)
             {
+                // 판정선과 노트 사이의 거리 계산
                 float distance = Math.Abs(target.Y - GlobalSettings.HitLine);
-                if (distance < 1.5f)
+
+                // 거리에 따른 점수 부여
+                if (distance < 1.0f) // 아주 가까움 -> PERFECT
                 {
                     scoreManager.AddScore(100, "PERFECT");
                     target.IsHit = true;
-                    target.Y = GlobalSettings.TrackHeight + 5;
+                    target.Y = GlobalSettings.TrackHeight + 5; // 화면 밖으로 치워버림
                 }
-                else if (distance < 3.0f)
+                else if (distance < 2.5f) // 적당히 가까움 -> GOOD
                 {
                     scoreManager.AddScore(50, "GOOD");
                     target.IsHit = true;
                     target.Y = GlobalSettings.TrackHeight + 5;
                 }
-                // 여기서 틀려도 Miss 처리는 NoteManager가 바닥 닿을 때 처리함
+                // 거리가 멀면 헛친 것으로 간주 (아무 일도 안 일어남, 미스는 바닥 닿을 때 처리)
             }
         }
 
+        // [게임 루프] 노트 이동 및 화면 그리기를 담당
         private void GameLoop()
         {
             while (isRunning)
             {
                 double currentTime = stopwatch.Elapsed.TotalSeconds;
 
-                // 1. 노래 끝났는지 체크
-                if (songDuration > 0 || currentTime > songDuration)
-                {
-                    isRunning = false;
-                }
+                // 종료 조건 1: 노래가 다 끝남
+                if (songDuration > 0 && currentTime > songDuration) isRunning = false;
 
-                // [★추가] 목숨 다 잃었는지 체크 (즉시 종료)
-                if (scoreManager.IsDead)
-                {
-                    isRunning = false;
-                }
+                // 종료 조건 2: 목숨이 다 닳음 (Game Over)
+                if (scoreManager.IsDead) isRunning = false;
 
+                // 1. 노트 생성
                 noteManager.SpawnLogic(currentTime);
+                // 2. 노트 이동 및 Miss 체크
                 noteManager.UpdateNotes(scoreManager);
+                // 3. 화면 그리기
                 renderer.Draw(scoreManager, noteManager.GetNotes());
-                Thread.Sleep(16);
+
+                Thread.Sleep(16); // 약 60 FPS (초당 60프레임) 유지
             }
         }
     }
