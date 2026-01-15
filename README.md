@@ -8,6 +8,8 @@ C# 언어와 객체지향(OOP) 설계를 기반으로 제작되었으며, `winmm
 
 ![Game Screenshot](https://raw.githubusercontent.com/Kyungil-smart/04-oop-console-project-Geronimo96/refs/heads/main/Images/20260112_112005_2.png)
 
+![Game ScreenShot](https://github.com/Kyungil-smart/04-oop-console-project-Geronimo96/blob/main/Images/20260116_013442.png?raw=true)
+
 
 ## ✨ 주요 기능 (Key Features)
 
