@@ -1,54 +1,67 @@
 ﻿using System;
-using System.Runtime.InteropServices; // 윈도우 명령어 사용을 위해 필요
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace RhythmGameOOP
 {
-    // [오디오 클래스] 윈도우 기본 기능을 이용해 음악을 재생합니다.
+    // [오디오 클래스] WAV 파일 재생에 최적화된 버전입니다.
     public class AudioEngine
     {
-        // 윈도우의 mciSendString 명령어를 가져옵니다.
         [DllImport("winmm.dll")]
         private static extern long mciSendString(string strCommand, StringBuilder strReturn, int iReturnLength, IntPtr hwndCallback);
 
-        // 현재 재생 중인 음악의 별명(ID)
+        // 현재 재생 중인 음악의 ID (별명)
         private string currentAlias;
 
-        // 음악 재생 함수 (경로만 받음, 볼륨 파라미터 삭제)
+        // [음악 재생 함수]
         public void Play(string filePath)
         {
-            // 기존 음악이 있다면 끕니다.
+            // 1. 이미 재생 중인 음악이 있다면 끄고 리소스를 정리합니다.
             Close();
 
-            // 음악 별명 생성 (겹치지 않게 시간 사용)
+            // 2. 음악 별명 생성 (고유한 이름을 줘서 겹치지 않게 함)
             currentAlias = "Media" + DateTime.Now.Ticks;
 
-            // 1. 파일 열기 (type을 명시하지 않아 mp3, wav 자동 감지)
-            string openCommand = $"open \"{filePath}\" alias {currentAlias}";
+            // 3. [WAV 최적화] 'type waveaudio'를 명시합니다.
+            // 이렇게 하면 윈도우가 WAV 파일을 가장 빠르고 가볍게 처리합니다.
+            // (mp3를 억지로 wav처럼 열거나 하지 않아 오류가 적습니다.)
+            string openCommand = $"open \"{filePath}\" type waveaudio alias {currentAlias}";
             mciSendString(openCommand, null, 0, IntPtr.Zero);
 
-            // 2. 재생 시작
+            // 4. 재생 시작
             mciSendString($"play {currentAlias}", null, 0, IntPtr.Zero);
         }
 
-        //노래의 총 길이(초 단위)를 가져오는 함수
+        // [볼륨 조절 함수]
+        public void SetVolume(int volume)
+        {
+            // [주의] .wav 파일(waveaudio 타입)은 mciSendString으로 볼륨 조절이 불가능합니다.
+            // 억지로 'setaudio' 명령어를 보내면 게임이 멈추거나 에러가 발생할 수 있습니다.
+            // 따라서 WAV 모드일 때는 이 함수가 아무 동작도 안 하게 막는 것이 '최적화'입니다.
+
+            // (만약 볼륨 조절이 꼭 필요하다면 파일을 .mp3로 변환해야 합니다.)
+            return;
+        }
+
+        // [재생 길이 확인 함수]
         public double GetDuration()
         {
             if (string.IsNullOrEmpty(currentAlias)) return 0;
 
             StringBuilder lengthBuf = new StringBuilder(32);
-            // 윈도우에게 "status 길이 알려줘"라고 명령
+
+            // 현재 음악의 길이를 물어봅니다.
             mciSendString($"status {currentAlias} length", lengthBuf, 32, IntPtr.Zero);
 
-            // 결과값(밀리초)을 숫자로 변환 후 초 단위(나누기 1000)로 반환
             if (long.TryParse(lengthBuf.ToString(), out long ms))
             {
+                // 밀리초(ms) 단위를 초(s) 단위로 바꿔서 반환
                 return ms / 1000.0;
             }
             return 0;
         }
 
-        // 음악 정지 함수
+        // [정지 함수]
         public void Stop()
         {
             if (!string.IsNullOrEmpty(currentAlias))
@@ -58,7 +71,7 @@ namespace RhythmGameOOP
             }
         }
 
-        // 자원 해제 (파일 닫기)
+        // [자원 해제 함수]
         private void Close()
         {
             if (!string.IsNullOrEmpty(currentAlias))

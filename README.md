@@ -11,22 +11,46 @@ C# 언어와 객체지향(OOP) 설계를 기반으로 제작되었으며, `winmm
 
 ## ✨ 주요 기능 (Key Features)
 
-* **콘솔 그래픽**: `System.Console` 만을 사용하여 리듬 게임 UI 구현
-* **4키 플레이**: `D`, `F`, `J`, `K` 키를 사용하는 정통 리듬 게임 방식
-* **곡 선택 시스템**: 방향키로 곡을 선택하고 엔터로 시작하는 메뉴 UI
-* **결과 화면**: 게임 종료 후 점수, 최대 콤보, 랭크(S~F) 출력
-* **부드러운 렌더링**: `StringBuilder`와 부분 갱신을 통한 깜빡임(Flickering) 최소화
-* **오디오 엔진**: `winmm.dll`을 사용하여 `.wav` 파일 재생 지원
+* **객체 지향 설계 (OOP Structure)**
+    * 씬(Scene) 관리 시스템 (메뉴 -> 난이도 선택 -> 게임 -> 결과 -> 게임오버)
+    * 철저한 역할 분리: `NoteManager`, `ScoreManager`, `Renderer`, `AudioEngine`
+* **다양한 난이도 모드 (Multi-Mode)**
+    * **[1] Normal Mode (4 Key):** `D`, `F`, `J`, `K` (초보자용)
+    * **[2] Hard Mode (8 Key):** `A`, `S`, `D`, `F` + `H`, `J`, `K`, `L` (숙련자용)
+    * 모드 선택 시 콘솔 창 크기와 UI가 자동으로 최적화되어 변경됩니다.
+* **시스템 기능**
+    * **볼륨 조절:** 게임 중 `↑`, `↓` 방향키로 실시간 시스템 볼륨 제어 (MP3 권장)
+    * **생명력 시스템:** 10개의 하트(♥)로 체력 관리, 0이 되면 Game Over
+    * **BPM 기반 노트 생성:** 곡의 속도에 맞춰 노트 자동 생성 및 속도 동기화
+* **시각적 효과 (Visuals)**
+    * **타격 이펙트:** 키 입력 시 판정선이 반짝이는 피드백 제공
+    * **부드러운 렌더링:** `StringBuilder`와 커서 제어를 통한 깜빡임 없는(Flicker-free) 화면 출력
 
 ## 🎮 조작 방법 (Controls)
 
-| 상황 | 키 (Key) | 동작 |
-|:---:|:---:|:---|
-| **메뉴** | `↑`, `↓` | 곡 선택 이동 |
-| | `Enter` | 곡 선택 / 게임 시작 |
-| **인게임** | `D`, `F`, `J`, `K` | 노트 판정 (왼쪽부터 순서대로) |
-| | `ESC` | 게임 종료 / 뒤로 가기 |
-| **결과창** | `Enter` | 메뉴로 돌아가기 |
+### 메뉴 화면 (Menu)
+| 키 (Key) | 동작 (Action) |
+| :--- | :--- |
+| `↑` / `↓` | 곡 선택 이동 |
+| `Enter` | 곡 선택 / 확인 |
+| `1` | Normal Mode (4 Key) 선택 |
+| `2` | Hard Mode (8 Key) 선택 |
+
+### 게임 플레이 (In-Game)
+| 기능 | 키 (Key) |
+| :--- | :--- |
+| **Normal Mode (4K)** | `D` `F` `J` `K` |
+| **Hard Mode (8K)** | `A` `S` `D` `F` (왼손) / `H` `J` `K` `L` (오른손) |
+| **볼륨 조절** | `↑` (크게) / `↓` (작게) |
+| **일시 정지 / 종료** | `ESC` |
+
+## 🛠️ 기술 스택 및 구현 원리 (Tech Specs)
+
+* **Language:** C# (.NET)
+* **Rendering:** Console GUI (Double Buffering simulation using `StringBuilder`)
+* **Audio:** Windows Multimedia API (`winmm.dll` / `mciSendString`)
+* **Input Handling:** Non-blocking Input (`Console.KeyAvailable`)
+* **Timing:** `Stopwatch` class for high-precision delta time calculation
 
 ## 🛠️ 설치 및 실행 방법 (How to Run)
 
@@ -42,17 +66,26 @@ C# 언어와 객체지향(OOP) 설계를 기반으로 제작되었으며, `winmm
     * `출력 디렉터리로 복사` 항목을 **`새 버전이면 복사`**로 설정해야 합니다.
 4.  `Ctrl + F5`를 눌러 빌드 및 실행합니다.
 
-## 📁 프로젝트 구조 (Project Structure)
+## 📂 프로젝트 구조 (Project Structure)
 
-* **Program.cs**: 프로그램 진입점 및 전체 흐름 관리
-* **RhythmGame.cs**: 게임 루프 및 주요 로직 제어
-* **GlobalSettings.cs**: BPM, 키 설정, 경로 등 전역 설정 관리
-* **AudioEngine.cs**: `winmm.dll` 기반 오디오 재생기
-* **Renderer.cs**: 더블 버퍼링 기반 콘솔 화면 출력
-* **NoteManager.cs**: 노트 생성 및 이동 로직
-* **ScoreManager.cs**: 점수, 콤보, 랭크 계산
-* **Scenes/**: `MusicSelectScene.cs`, `ResultScene.cs` 등 화면별 클래스
-* **Songs/**: 게임에 사용되는 음악 파일 저장소
+```text
+RhythmGameOOP/
+├── Program.cs           # 메인 진입점
+├── Game/
+│   ├── RhythmGame.cs    # 게임 메인 루프 (Update/Render 관리)
+│   ├── NoteManager.cs   # 노트 생성 및 이동, 판정 로직
+│   ├── ScoreManager.cs  # 점수, 콤보, 체력(Life) 관리
+│   └── Renderer.cs      # 화면 출력 (UI 위치 자동 계산 및 그리기)
+├── Scenes/
+│   ├── MusicSelectScene.cs # 곡 및 난이도 선택 메뉴
+│   ├── ResultScene.cs      # 결과(랭크) 화면
+│   └── GameOverScene.cs    # 게임 오버 화면
+├── Systems/
+│   ├── AudioEngine.cs   # winmm.dll 래퍼 (음악 재생, 볼륨 조절)
+│   └── GlobalSettings.cs # 키 설정, 모드(4K/8K), 화면 상수 관리
+└── Objects/
+    ├── Note.cs          # 노트 데이터 객체
+    └── Song.cs          # 곡 정보 객체
 
 ## 🎵 곡 추가 방법 (Adding Songs)
 

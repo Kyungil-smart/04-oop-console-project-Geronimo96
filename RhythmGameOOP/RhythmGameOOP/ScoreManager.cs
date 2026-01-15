@@ -11,8 +11,8 @@ namespace RhythmGameOOP
         public int CurrentCombo { get; private set; }
         public string LastJudge { get; private set; } = "READY";
 
-        // [★추가] 목숨 (기본 10개)
-        public int Life { get; private set; } = 10;
+        // [★추가] 목숨 (기본 15개)
+        public int Life { get; private set; } = 15;
 
         // [★추가] 게임 오버 상태 확인
         public bool IsDead => Life <= 0;

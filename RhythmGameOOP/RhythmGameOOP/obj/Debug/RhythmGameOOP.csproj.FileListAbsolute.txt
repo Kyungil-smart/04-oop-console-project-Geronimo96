@@ -18,3 +18,13 @@ C:\Users\KGA1\Documents\GitHub\04-oop-console-project-Geronimo96\RhythmGameOOP\R
 C:\Users\KGA1\Documents\GitHub\04-oop-console-project-Geronimo96\RhythmGameOOP\RhythmGameOOP\obj\Debug\RhythmGameOOP.exe
 C:\Users\KGA1\Documents\GitHub\04-oop-console-project-Geronimo96\RhythmGameOOP\RhythmGameOOP\obj\Debug\RhythmGameOOP.pdb
 C:\Users\KGA1\Documents\GitHub\04-oop-console-project-Geronimo96\RhythmGameOOP\RhythmGameOOP\bin\Debug\Songs\BSS-Fighting.wav
+C:\Users\KGA1\OneDrive\Documents\GitHub\04-oop-console-project-Geronimo96\RhythmGameOOP\RhythmGameOOP\bin\Debug\Songs\BSS-Fighting.wav
+C:\Users\KGA1\OneDrive\Documents\GitHub\04-oop-console-project-Geronimo96\RhythmGameOOP\RhythmGameOOP\bin\Debug\Songs\yung-kai-blue.wav
+C:\Users\KGA1\OneDrive\Documents\GitHub\04-oop-console-project-Geronimo96\RhythmGameOOP\RhythmGameOOP\bin\Debug\App.config
+C:\Users\KGA1\OneDrive\Documents\GitHub\04-oop-console-project-Geronimo96\RhythmGameOOP\RhythmGameOOP\bin\Debug\RhythmGameOOP.exe.config
+C:\Users\KGA1\OneDrive\Documents\GitHub\04-oop-console-project-Geronimo96\RhythmGameOOP\RhythmGameOOP\bin\Debug\RhythmGameOOP.exe
+C:\Users\KGA1\OneDrive\Documents\GitHub\04-oop-console-project-Geronimo96\RhythmGameOOP\RhythmGameOOP\bin\Debug\RhythmGameOOP.pdb
+C:\Users\KGA1\OneDrive\Documents\GitHub\04-oop-console-project-Geronimo96\RhythmGameOOP\RhythmGameOOP\obj\Debug\RhythmGameOOP.csproj.AssemblyReference.cache
+C:\Users\KGA1\OneDrive\Documents\GitHub\04-oop-console-project-Geronimo96\RhythmGameOOP\RhythmGameOOP\obj\Debug\RhythmGameOOP.csproj.CoreCompileInputs.cache
+C:\Users\KGA1\OneDrive\Documents\GitHub\04-oop-console-project-Geronimo96\RhythmGameOOP\RhythmGameOOP\obj\Debug\RhythmGameOOP.exe
+C:\Users\KGA1\OneDrive\Documents\GitHub\04-oop-console-project-Geronimo96\RhythmGameOOP\RhythmGameOOP\obj\Debug\RhythmGameOOP.pdb

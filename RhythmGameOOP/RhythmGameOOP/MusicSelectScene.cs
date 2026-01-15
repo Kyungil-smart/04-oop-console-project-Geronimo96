@@ -28,7 +28,7 @@ namespace RhythmGameOOP
             string path2 = Path.Combine(basePath, "Songs", "BSS-Fighting.wav");
             songs.Add(new Song("2. BSS - 파이팅 해야지 (Feat. 이영지)", path2, 152));
 
-            // 필요한 만큼 계속 추가 가능...
+            // 필요한 만큼 계속 추가 가능......
         }
 
         // 메뉴 실행 함수 (사용자가 곡을 고를 때까지 무한 반복)
@@ -53,8 +53,42 @@ namespace RhythmGameOOP
                         // 맨 마지막 '게임 종료'를 골랐다면 null 반환
                         if (selectedIndex == songs.Count) return null;
 
+                        // [신규] 곡을 선택했으면 난이도 물어보기
+                        Song selectedSong = songs[selectedIndex];
+                        SelectDifficulty();
                         // 선택한 곡 정보 반환
                         return songs[selectedIndex];
+                }
+            }
+        }
+
+        // [신규] 난이도 선택 화면 함수
+        private void SelectDifficulty()
+        {
+            Console.Clear();
+            Console.WriteLine("\n\n");
+            Console.WriteLine("    ==========================================");
+            Console.WriteLine("           난이도를 선택하세요 (DIFFICULTY)       ");
+            Console.WriteLine("    ==========================================");
+            Console.WriteLine("\n\n");
+            Console.WriteLine("      [1] NORMAL MODE (4 KEY) - D F J K");
+            Console.WriteLine("\n");
+            Console.WriteLine("      [2] HARD MODE   (8 KEY) - A S D F H J K L");
+            Console.WriteLine("\n\n");
+            Console.Write("      선택 >> ");
+
+            while (true)
+            {
+                var key = Console.ReadKey(true).Key;
+                if (key == ConsoleKey.D1 || key == ConsoleKey.NumPad1)
+                {
+                    GlobalSettings.IsHardMode = false; // 4키
+                    break;
+                }
+                if (key == ConsoleKey.D2 || key == ConsoleKey.NumPad2)
+                {
+                    GlobalSettings.IsHardMode = true; // 8키
+                    break;
                 }
             }
         }

@@ -24,10 +24,13 @@ namespace RhythmGameOOP
             audio = new AudioEngine();
         }
 
-        // [변경] 게임이 끝나면 점수 정보(ScoreManager)를 반환합니다.
+        // 게임이 끝나면 점수 정보(ScoreManager)를 반환합니다.
         public ScoreManager Run()
         {
             renderer.Init();
+
+            // 배경(트랙, 점수판 등)을 먼저 그려야 합니다.
+            renderer.DrawStaticUI();
 
             // 파일 존재 여부 확인
             if (!System.IO.File.Exists(GlobalSettings.MusicPath))
@@ -42,9 +45,15 @@ namespace RhythmGameOOP
             try
             {
                 audio.Play(GlobalSettings.MusicPath);
+                // [★추가] 노래 틀자마자 저장된 볼륨으로 설정!
+                audio.SetVolume(GlobalSettings.Volume);
+
                 songDuration = audio.GetDuration() + 2.0;
             }
             catch { }
+
+            // ★★★ 가장 중요! 시간을 흐르게 해야 합니다. ★★★
+            stopwatch.Start();
 
             Thread gameThread = new Thread(GameLoop);
             gameThread.Start();
@@ -67,8 +76,27 @@ namespace RhythmGameOOP
                 if (Console.KeyAvailable)
                 {
                     var key = Console.ReadKey(true).Key;
-                    if (key == ConsoleKey.Escape) isRunning = false;
-                    else ProcessKey(key);
+
+                    if (key == ConsoleKey.Escape)
+                    {
+                        isRunning = false;
+                    }
+                    // [★추가] 위쪽 화살표: 소리 키우기
+                    else if (key == ConsoleKey.UpArrow)
+                    {
+                        GlobalSettings.Volume = Math.Min(100, GlobalSettings.Volume + 5); // 100 넘지 않게
+                        audio.SetVolume(GlobalSettings.Volume);
+                    }
+                    // [★추가] 아래쪽 화살표: 소리 줄이기
+                    else if (key == ConsoleKey.DownArrow)
+                    {
+                        GlobalSettings.Volume = Math.Max(0, GlobalSettings.Volume - 5); // 0 밑으로 안 가게
+                        audio.SetVolume(GlobalSettings.Volume);
+                    }
+                    else
+                    {
+                        ProcessKey(key); // 게임 키(D,F,J,K) 처리
+                    }
                 }
                 Thread.Sleep(1);
             }
@@ -78,6 +106,9 @@ namespace RhythmGameOOP
         {
             int laneIndex = Array.IndexOf(GlobalSettings.Keys, key);
             if (laneIndex == -1) return;
+
+            // [추가] 키를 누르면 무조건 이펙트 발동! (맞췄든 틀렸든 시각적 피드백)
+            renderer.TriggerEffect(laneIndex);
 
             Note target = noteManager.GetClosestNote(laneIndex);
 
@@ -107,7 +138,7 @@ namespace RhythmGameOOP
                 double currentTime = stopwatch.Elapsed.TotalSeconds;
 
                 // 1. 노래 끝났는지 체크
-                if (songDuration > 0 && currentTime > songDuration)
+                if (songDuration > 0 || currentTime > songDuration)
                 {
                     isRunning = false;
                 }
@@ -121,7 +152,7 @@ namespace RhythmGameOOP
                 noteManager.SpawnLogic(currentTime);
                 noteManager.UpdateNotes(scoreManager);
                 renderer.Draw(scoreManager, noteManager.GetNotes());
-                Thread.Sleep(33);
+                Thread.Sleep(16);
             }
         }
     }
