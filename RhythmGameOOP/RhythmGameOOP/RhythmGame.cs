@@ -138,7 +138,7 @@ namespace RhythmGameOOP
                 double currentTime = stopwatch.Elapsed.TotalSeconds;
 
                 // 1. 노래 끝났는지 체크
-                if (songDuration > 0 && currentTime > songDuration)
+                if (songDuration > 0 || currentTime > songDuration)
                 {
                     isRunning = false;
                 }
@@ -152,7 +152,7 @@ namespace RhythmGameOOP
                 noteManager.SpawnLogic(currentTime);
                 noteManager.UpdateNotes(scoreManager);
                 renderer.Draw(scoreManager, noteManager.GetNotes());
-                Thread.Sleep(33);
+                Thread.Sleep(16);
             }
         }
     }
