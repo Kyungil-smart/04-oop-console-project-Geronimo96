@@ -28,7 +28,7 @@ namespace RhythmGameOOP
             string path2 = Path.Combine(basePath, "Songs", "BSS-Fighting.wav");
             songs.Add(new Song("2. BSS - 파이팅 해야지 (Feat. 이영지)", path2, 152));
 
-            // 필요한 만큼 계속 추가 가능...
+            // 필요한 만큼 계속 추가 가능......
         }
 
         // 메뉴 실행 함수 (사용자가 곡을 고를 때까지 무한 반복)

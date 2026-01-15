@@ -41,7 +41,7 @@ namespace RhythmGameOOP
         public const int HitLine = 17;
 
         // 노트 낙하 속도 계산 (BPM에 비례)
-        public static float NoteSpeed => (float)(BPM / 150.0);
+        public static float NoteSpeed => (float)(BPM / 400.0);
 
         // [추가] 볼륨 (기본값 50)
         public static int Volume = 50;
