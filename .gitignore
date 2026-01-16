@@ -1,5 +1,6 @@
 # Visual Studio 임시 파일 무시
 .vs/
+.vscode/
 bin/
 obj/
 *.user
